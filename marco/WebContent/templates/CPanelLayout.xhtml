@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html dir="ltr" lang="en"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:p="http://primefaces.org/ui" >
+
+
+	<h:head>
+		<title>Marco</title>		
+	</h:head>
+	
+	<h:body >
+	
+	
+		<h:outputStylesheet name="css/mainstyle.css" />
+		<h:outputStylesheet name="css/menu.css"  />
+		
+		
+		
+		<p:layout fullPage="true" styleClass="glayoutUnit" >
+
+        	<!-- Header -->
+        	<p:layoutUnit styleClass="glayoutUnit" position="north" gutter="0" size="100" resizable="false" closable="false" collapsible="false">
+            	<ui:include src="../templates/tiles/Header.xhtml" />
+            </p:layoutUnit>
+
+      	<!-- Footer -->
+ <!--             <p:layoutUnit styleClass="glayoutUnit" gutter="0" position="south" size="29"  resizable="false" closable="false" collapsible="false">
+            	<ui:include src="../templates/tiles/Footer.xhtml" />
+            </p:layoutUnit> 
+ --> 
+			<!-- Left Menu -->
+            <p:layoutUnit styleClass="glayoutUnitLeftMenu" gutter="0" position="west" size="230" resizable="false" closable="false" collapsible="false">
+                <ui:include src="../templates/tiles/UsersMenu.xhtml" />
+            </p:layoutUnit>
+
+			<!-- Contents -->
+            <p:layoutUnit styleClass="glayoutUnitCenter" gutter="0" position="center" >
+            
+            	<style>
+ 
+				.ui-layout-unit-content{
+ 				  background: RGB(11,99,116);
+				}</style>
+					
+					
+            	<center>
+                	<ui:insert name="content"></ui:insert>
+                </center>
+            </p:layoutUnit>
+        
+        </p:layout>
+    
+    
+    </h:body>
+</html>

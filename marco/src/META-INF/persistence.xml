@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="glib">
+		<class>org.asena.AAA.Entity.Aaaccesslist</class>
+		<class>org.asena.AAA.Entity.Aaexceptionlog</class>
+		<class>org.asena.AAA.Entity.Aapage</class>
+		<class>org.asena.AAA.Entity.Aapagecat</class>
+		<class>org.asena.AAA.Entity.Aapagevisit</class>
+		<class>org.asena.AAA.Entity.Aarole</class>
+		<class>org.asena.AAA.Entity.Aasession</class>
+		<class>org.asena.AAA.Entity.Aauser</class>
+		
+		
+		<class>org.asena.glib.Entity.Amanat</class>
+		<class>org.asena.glib.Entity.Book</class>
+		<class>org.asena.glib.Entity.Member</class>
+		<class>org.asena.glib.Entity.Membertype</class>
+		
+		
+		<class>org.asena.edu.Entity.Course</class>
+		<class>org.asena.edu.Entity.Coursetype</class>
+		<class>org.asena.marco.Entity.Booking</class>
+		<class>org.asena.marco.Entity.Bookingstatus</class>
+		<class>org.asena.marco.Entity.City</class>
+		<class>org.asena.marco.Entity.Classification</class>
+		<class>org.asena.marco.Entity.Contract</class>
+		<class>org.asena.marco.Entity.Currency</class>
+		<class>org.asena.marco.Entity.Customer</class>
+		<class>org.asena.marco.Entity.Customerstatus</class>
+		<class>org.asena.marco.Entity.Paymentmethod</class>
+		<class>org.asena.marco.Entity.Presenter</class>
+		<class>org.asena.marco.Entity.Presentertype</class>
+		<class>org.asena.marco.Entity.Returnrule</class>
+		<class>org.asena.marco.Entity.Route</class>
+		<class>org.asena.marco.Entity.Routedifficulty</class>
+		<class>org.asena.marco.Entity.Routetype</class>
+		<class>org.asena.marco.Entity.Servicetype</class>
+		<class>org.asena.marco.Entity.Statustype</class>
+		<class>org.asena.marco.Entity.Ticket</class>
+		<class>org.asena.marco.Entity.Trip</class>
+		<class>org.asena.marco.Entity.Triptype</class>
+		<class>org.asena.marco.Entity.Tripvehicletype</class>
+	</persistence-unit>
+</persistence>

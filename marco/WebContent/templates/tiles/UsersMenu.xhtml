@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:p="http://primefaces.org/ui" >
+   		
+<h:head>  
+	<title>Marco</title>
+	
+	<style>
+   		.ui-menuitem-text {color:white;}
+		
+        .ui-menuitem-text
+        {
+            float: left !important;
+            color:RGB(255,255,255)  !important;
+        }
+        
+         .ui-menuitem
+        {
+            float: left !important;
+            width: 160px;
+        }
+        
+        .ui-menu .ui-widget-header h3
+        {
+       		font-size: 16px !important;
+		   
+			color:RGB(0,0,0)  !important;
+            float: left !important;
+        }
+        
+        
+	</style>
+	
+</h:head>
+
+<h:body>
+<h:form>
+	<f:event listener="#{LoadPageMB.checkPageAccess()}" type="preRenderView"/>  
+		
+	<p:panelMenu style="width:210px" model="#{LoadPageMB.userMenu}" styleClass="LeftMenupanelMenu"/>
+
+			
+</h:form>
+</h:body>
+</html>

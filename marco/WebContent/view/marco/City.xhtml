@@ -1,0 +1,151 @@
+<ui:composition template="/templates/CPanelLayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<ui:define id="content" name="content">
+<br/><br/>
+
+	 
+<h:form id="frmNewEdit">	
+		<p:dialog dir="ltr" id="dlgNewEdit" header="ثبت / ویرایش اطلاعات شهر  ها" widgetVar="dlgNewEdit" 
+				  closable="false" width="900" height="700">				  
+					
+			<p:outputLabel value="لطفا دقت نمایید، تکمیل فیلدهای ستاره دار الزامی می باشد."/>
+			<br/>
+
+										
+	        <h:panelGrid id="panelgridNewEdit" columns="2" >					           
+
+	            	         	          
+	            <p:outputLabel for="name" value="عنوان شهر  : " />
+	            <p:inputText id="name" maxlength="299" value="#{CityMB.baseEntity.name}" 
+	               			required="true" requiredMessage="فیلد عنوان شهرنباید خالی باشد">					           
+	            </p:inputText>
+
+	            <p:outputLabel for="code" value="کد شهر  : " />
+	            <p:inputText id="code" maxlength="299" value="#{CityMB.baseEntity.code}"
+	               			required="true" requiredMessage="فیلد کد شهرنباید خالی باشد">					           
+	            </p:inputText>
+	            
+	           	<p:outputLabel for="provinceid" value="کد استان  : " />
+	            <p:inputText id="provinceid" maxlength="299" value="#{CityMB.baseEntity.provinceid}"
+	               			required="true" requiredMessage="فیلد کد استان نباید خالی باشد">					           
+	            </p:inputText>
+
+	            <p:outputLabel for="countryid" value="کد کشور  : " />
+	            <p:inputText id="countryid" maxlength="299" value="#{CityMB.baseEntity.countryid}" 
+	               			required="true" requiredMessage="فیلد کد شهرنباید خالی باشد">					           
+	            </p:inputText>
+	            
+
+				
+
+
+			</h:panelGrid>
+			
+			
+	        <p:spacer height="10" width="50"/>
+	        <p:commandButton  type="submit" value="ثبت / ویرایش اطلاعات" action="#{CityMB.AddEdit()}" ajax="true" 
+	        		 icon="ui-icon-gNew"
+	        		update=":frmDT:dtList dlgNewEdit panelgridNewEdit"  oncomplete="PF('dlgNewEdit').show();"/>
+	       
+	        &#160;&#160;&#160;&#160;
+	        <p:commandButton value="پایان عملیات / بستن فرم" oncomplete="PF('dlgNewEdit').hide();" ajax="true" 
+	        			action="#{CityMB.setCancel()}"  icon="ui-icon-close"
+	        			update=":frmDT:dtList dlgNewEdit panelgridNewEdit" immediate="true" process="@all"/>
+
+
+			<p:messages  id="messages" showDetail="false" autoUpdate="true" closable="true" />
+		
+		</p:dialog>
+</h:form>
+
+
+
+<h:form id="frmDT">
+
+		<p:growl id="growl" showDetail="true" life="4000"/> 
+
+        <p:dataTable dir="ltr" id="dtList" widgetVar="dtList" value="#{CityMB.baseEntityList}" var="bb"
+			        rowIndexVar="rowIndex" emptyMessage="هیچ رکوردی برای نمایش پیدا نشد" 
+			        paginator="true" rows="30" rowsPerPageTemplate="30,60,90,120" paginatorPosition="bottom"      
+			        paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"                         
+			        draggableColumns="true" selectionMode="single" rowKey="#{bb.id}">		
+
+
+			<f:facet name="header">
+	            <table><tr>
+	            		<td align="left"  >  
+					    	<p:commandButton oncomplete="PF('dlgNewEdit').show();" icon="ui-icon-gNew"  
+					    			value="افزودن شهر" ajax="true" action="#{CityMB.setNewRecord()}" update=":frmNewEdit"/>	            
+	            		</td>	            	
+	            		<td align="center"  >  
+				            <p:outputLabel value="مدیریت اطلاعات شهر ها" />		    			    	
+	            		</td>	            	
+	            		<td align="right"  >  
+				            <p:commandLink id="p1" ajax="false">
+				                <p:graphicImage library="images" name="excel.png" width="24"/>
+				                <p:dataExporter type="xls" target="dtList" fileName="AllCourseTypes" />
+				            </p:commandLink>	
+
+
+	            		</td>	            	
+	            </tr></table>
+		    </f:facet>
+
+
+			
+				
+			<p:column headerText="ردیف">
+                <p:outputLabel value="#{rowIndex+1}"  />
+			</p:column>
+
+            <p:column headerText="کد شهر " sortBy="#{bb.code}" filterBy="#{bb.code}" filterMatchMode="contains" >
+                <p:outputLabel value="#{bb.code}" />
+            </p:column>
+
+            <p:column headerText="عنوان شهر " sortBy="#{bb.name}" filterBy="#{bb.name}" filterMatchMode="contains" >
+                <p:outputLabel value="#{bb.name}" />
+            </p:column>
+
+           <p:column headerText="کد استان " sortBy="#{bb.provinceid}" filterBy="#{bb.provinceid}" filterMatchMode="contains" >
+                <p:outputLabel value="#{bb.provinceid}" />
+            </p:column>
+
+           <p:column headerText="کد کشور " sortBy="#{bb.countryid}" filterBy="#{bb.countryid}" filterMatchMode="contains"  >
+                <p:outputLabel value="#{bb.countryid}" />
+            </p:column>
+
+			            
+
+            <p:column headerText="ویرایش"  >
+            	<p:commandButton oncomplete="PF('dlgNewEdit').show();" icon="ui-icon-gEdit" type="submit"  value="" 
+            		ajax="true" update=":frmNewEdit:dlgNewEdit" process="@this" action="#{CityMB.setSelectedRow(bb)}"/>
+            </p:column>
+
+            <p:column headerText="حذف" >
+            	<p:commandButton icon="ui-icon-gDelete" type="submit" value="" ajax="true" 
+            	update="@form" action="#{CityMB.Remove(bb)}">
+            		<p:confirm header="تائید حذف رکورد انتخابی" message="آیا از حذف رکورد انتخابی مطمئن هستید؟" icon="ui-icon-alert" />
+            	</p:commandButton>
+            </p:column>			
+			
+        </p:dataTable>
+
+
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+	        <p:commandButton value="بلی" type="button"  icon="ui-icon-check" />
+	        <p:commandButton value="خیر" type="button"  icon="ui-icon-close" />
+	    </p:confirmDialog>
+
+
+</h:form>
+
+
+<br/><br/><br/><br/><br/><br/>
+    
+</ui:define>
+</ui:composition>
